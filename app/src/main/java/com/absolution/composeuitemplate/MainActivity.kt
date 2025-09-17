@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.absolution.composeuitemplate.ui.pages.ChatListPage
 import com.absolution.composeuitemplate.ui.pages.ChatPage
+import com.absolution.composeuitemplate.ui.pages.FeedbackPage
 import com.absolution.composeuitemplate.ui.theme.ComposeUITemplateTheme
 import com.absolution.composeuitemplate.ui.viewmodel.Chat
 
@@ -45,30 +46,34 @@ class MainActivity : ComponentActivity() {
 //        SettingsPage(
 //            modifier = Modifier.fillMaxSize()
 //        )
-                        NavHost(
-                            navController = navController,
-                            startDestination = "/chat-list"
-                        ) {
-                            composable(route = "/chat-list") {
-                                ChatListPage(
-                                    onChatClicked = { chat ->
-                                        navController.currentBackStackEntry?.savedStateHandle?.set("chat", chat)
-                                        navController.navigate("/chat")
-                                    },
-                                    modifier = Modifier.fillMaxSize()
-                                )
-                            }
-                            composable(route = "/chat") { backstackEntry ->
-                                val chat = navController.previousBackStackEntry?.savedStateHandle?.get<Chat>("chat")
-                                ChatPage(
-                                    chat = chat,
-                                    onBackPressed = {
-                                        navController.popBackStack()
-                                    },
-                                    modifier = Modifier.fillMaxSize()
-                                )
-                            }
-                        }
+//                        NavHost(
+//                            navController = navController,
+//                            startDestination = "/chat-list"
+//                        ) {
+//                            composable(route = "/chat-list") {
+//                                ChatListPage(
+//                                    onChatClicked = { chat ->
+//                                        navController.currentBackStackEntry?.savedStateHandle?.set("chat", chat)
+//                                        navController.navigate("/chat")
+//                                    },
+//                                    modifier = Modifier.fillMaxSize()
+//                                )
+//                            }
+//                            composable(route = "/chat") { backstackEntry ->
+//                                val chat = navController.previousBackStackEntry?.savedStateHandle?.get<Chat>("chat")
+//                                ChatPage(
+//                                    chat = chat,
+//                                    onBackPressed = {
+//                                        navController.popBackStack()
+//                                    },
+//                                    modifier = Modifier.fillMaxSize()
+//                                )
+//                            }
+//                        }
+                        FeedbackPage(
+                            onBackClicked = {},
+                            modifier = Modifier.fillMaxSize()
+                        )
                     }
                 }
             }
